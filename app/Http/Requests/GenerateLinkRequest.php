@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Users;
+namespace App\Http\Requests;
+
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GetHistoryRequest extends FormRequest
+class GenerateLinkRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

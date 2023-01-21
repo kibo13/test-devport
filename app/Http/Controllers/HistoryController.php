@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Requests\Users\GetHistoryRequest;
+use App\Http\Requests\GetHistoryRequest;
 use App\Repositories\Users\UserRepositoryInterface;
 
 class HistoryController extends Controller

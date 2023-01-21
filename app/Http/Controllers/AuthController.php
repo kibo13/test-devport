@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Requests\Users\RegisterUserRequest;
+use App\Http\Requests\RegisterUserRequest;
 use App\Repositories\Users\UserRepositoryInterface;
 use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 
-use App\Http\Requests\Users\DeactivateLinkRequest;
-use App\Http\Requests\Users\GenerateLinkRequest;
+use App\Http\Requests\DeactivateLinkRequest;
+use App\Http\Requests\GenerateLinkRequest;
 use App\Repositories\Users\UserRepositoryInterface;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
