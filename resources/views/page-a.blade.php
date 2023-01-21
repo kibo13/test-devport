@@ -12,7 +12,7 @@
             </a>
         </h5>
 
-        <form class="form-group" action="{{ route('a.generate.link') }}" method="POST">
+        <form class="form-group" action="{{ route('generate.link') }}" method="POST">
             @csrf
             <input type="hidden" name="token" value="{{ $user->token }}">
             <button class="btn btn-sm btn-primary">
@@ -20,7 +20,7 @@
             </button>
         </form>
 
-        <form class="form-group" action="{{ route('a.deactivate.link') }}" method="POST">
+        <form class="form-group" action="{{ route('deactivate.link') }}" method="POST">
             @csrf
             <input type="hidden" name="token" value="{{ $user->token }}">
             <button class="btn btn-sm btn-danger">
@@ -32,7 +32,7 @@
             <a class="btn btn-sm btn-success text-lg" href="">Imfeelinglucky</a>
         </div>
 
-        <form class="form-group" action="{{ route('a.history') }}" method="GET">
+        <form class="form-group" action="{{ route('history') }}" method="GET">
             <input type="hidden" name="token" value="{{ $user->token }}">
             <button class="btn btn-sm btn-secondary">
                 History

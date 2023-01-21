@@ -1,15 +1,15 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\LinkController;
 use App\Http\Controllers\PageAController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ AuthController::class, 'index' ])->name('home');
-Route::post('register', [ AuthController::class, 'register' ])->name('register');
-
-Route::prefix('/page-a')->group(function () {
-    Route::get('/history', [ PageAController::class, 'getHistory' ])->name('a.history');
-    Route::get('/{token}', [ PageAController::class, 'index' ])->name('a.index');
-    Route::post('/generate-link', [ PageAController::class, 'generateLink' ])->name('a.generate.link');
-    Route::post('/deactivate-link', [ PageAController::class, 'deactivateLink' ])->name('a.deactivate.link');
-});
+Route::get('/page-a/{token}', [ PageAController::class, 'index' ])->name('a.index');
+Route::get('/history', [ HistoryController::class, 'index' ])->name('history');
+Route::post('/register', [ AuthController::class, 'register' ])->name('register');
+Route::post('/generate-link', [ LinkController::class, 'generate' ])->name('generate.link');
+Route::post('/deactivate-link', [ LinkController::class, 'deactivate' ])->name('deactivate.link');
+Route::post('/imfeelinglucky', [ PageAController::class, 'play' ])->name('a.imfeelinglucky');

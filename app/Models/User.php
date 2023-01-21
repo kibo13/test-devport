@@ -45,8 +45,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * @return HasMany
+     */
     public function histories(): HasMany
     {
-        return $this->hasMany(History::class)->orderByDesc('id')->limit(3);
+        return $this->hasMany(History::class);
+    }
+
+    /**
+     * @param int $number
+     * @return HasMany
+     */
+    public function getLatestGameResults(int $number = 3): HasMany
+    {
+        return $this->histories()->orderByDesc('id')->limit(3);
     }
 }
