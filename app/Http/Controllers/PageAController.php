@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Users\DeactivateLinkRequest;
 use App\Http\Requests\Users\GenerateLinkRequest;
+use App\Http\Requests\Users\GetHistoryRequest;
 use App\Repositories\Users\UserRepositoryInterface;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
@@ -18,7 +19,7 @@ class PageAController extends Controller
         $host = Request::server('HTTP_HOST');
         $path = Request::server('REQUEST_URI');
 
-        return "{$http}://{$host}/{$path}";
+        return "{$http}://{$host}{$path}";
     }
 
     public function index($token, UserRepositoryInterface $userRepository)
@@ -67,5 +68,15 @@ class PageAController extends Controller
         );
 
         return redirect()->back();
+    }
+
+    public function getHistory(GetHistoryRequest $request, UserRepositoryInterface $userRepository)
+    {
+        $user = $userRepository->getUserByToken($request['token']);
+
+        return view('history', [
+            'histories' => $user->histories,
+            'token'     => $user->token,
+        ]);
     }
 }

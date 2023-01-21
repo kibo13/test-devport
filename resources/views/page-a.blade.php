@@ -32,9 +32,12 @@
             <a class="btn btn-sm btn-success text-lg" href="">Imfeelinglucky</a>
         </div>
 
-        <div class="form-group">
-            <a class="btn btn-sm btn-secondary text-lg" href="">History</a>
-        </div>
+        <form class="form-group" action="{{ route('a.history') }}" method="GET">
+            <input type="hidden" name="token" value="{{ $user->token }}">
+            <button class="btn btn-sm btn-secondary">
+                History
+            </button>
+        </form>
     </div>
 </div>
 @endsection
