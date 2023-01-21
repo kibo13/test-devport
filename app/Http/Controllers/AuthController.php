@@ -37,7 +37,7 @@ class AuthController extends Controller
                     'username'   => $request['username'],
                     'phone'      => $request['phone'],
                     'token'      => generate_unique_token(),
-                    'expired_at' => Carbon::now()->addSeconds(60),
+                    'expired_at' => Carbon::now()->addDays(7),
                 ]
             );
 
