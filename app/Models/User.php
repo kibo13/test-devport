@@ -22,6 +22,7 @@ class User extends Authenticatable
         'phone',
         'token',
         'expired_at',
+        'is_active',
     ];
 
     /**

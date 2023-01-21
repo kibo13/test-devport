@@ -6,4 +6,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ AuthController::class, 'index' ])->name('home');
 Route::post('register', [ AuthController::class, 'register' ])->name('register');
-Route::get('/page-a/{token}', [ PageAController::class, 'index' ])->name('a.index');
+
+Route::prefix('/page-a')->group(function () {
+    Route::get('/{token}', [ PageAController::class, 'index' ])->name('a.index');
+    Route::post('/generate-link', [ PageAController::class, 'generateLink' ])->name('a.generate.link');
+    Route::post('/deactivate-link', [ PageAController::class, 'deactivateLink' ])->name('a.deactivate.link');
+});
