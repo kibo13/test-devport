@@ -28,9 +28,29 @@
             </button>
         </form>
 
-        <div class="form-group">
-            <a class="btn btn-sm btn-success text-lg" href="">Imfeelinglucky</a>
+        @if(session()->has('game'))
+        <div class="my-2 alert alert-{{ session()->get('game') == 'win' ? 'success' : 'danger' }}" role="alert">
+            <ul class="m-0 p-0" style="list-style-type: none;">
+                <li>
+                    <strong>Result:</strong> {{ session()->get('game') }}
+                </li>
+                <li>
+                    <strong>Random number:</strong> {{ session()->get('number') }}
+                </li>
+                <li>
+                    <strong>Winning amount:</strong> {{ session()->get('amount') }}
+                </li>
+            </ul>
         </div>
+        @endif
+
+        <form class="form-group" action="{{ route('imfeelinglucky') }}" method="POST">
+            @csrf
+            <input type="hidden" name="token" value="{{ $user->token }}">
+            <button class="btn btn-sm btn-success text-lg">
+                Imfeelinglucky
+            </button>
+        </form>
 
         <form class="form-group" action="{{ route('history') }}" method="GET">
             <input type="hidden" name="token" value="{{ $user->token }}">
